@@ -1,5 +1,6 @@
 require "ostruct"
 require "churnzero/client"
+require "churnzero/contact"
 require "churnzero/version"
 
 module Churnzero
