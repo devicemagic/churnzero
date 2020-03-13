@@ -1,7 +1,9 @@
 require "ostruct"
+require "time"
 require "churnzero/account"
 require "churnzero/client"
 require "churnzero/contact"
+require "churnzero/event"
 require "churnzero/version"
 
 module Churnzero

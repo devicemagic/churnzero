@@ -12,3 +12,8 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+# Sample app_key configuration
+Churnzero.configure do |config|
+  config.app_key = 'configured-app-key'
+end
