@@ -7,13 +7,11 @@ RSpec.describe Churnzero do
   end
 
   describe ".configure" do
-    before do
+    it "can set the app_key" do
       Churnzero.configure do |config|
         config.app_key = 'some-app-key'
       end
-    end
 
-    it "can set the app_key" do
       expect(Churnzero.configuration.app_key).to eq 'some-app-key'
     end
   end

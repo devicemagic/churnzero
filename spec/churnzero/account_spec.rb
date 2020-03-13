@@ -1,10 +1,4 @@
 RSpec.describe Churnzero::Account do
-  before do
-    Churnzero.configure do |config|
-      config.app_key = 'configured-app-key'
-    end
-  end
-
   subject { Churnzero::Account.new(account_uid: "acme-123", contact_uid: "foo-567", name: "ACME") }
 
   describe ".new" do
@@ -34,7 +28,7 @@ RSpec.describe Churnzero::Account do
       it 'raises a Churnzero::Error' do
         subject.account_uid = nil
         subject.contact_uid = nil
-        expect { subject.save }.to raise_error(Churnzero::Error, /You must provide a valid/)
+        expect { subject.save }.to raise_error(Churnzero::Error, /must provide a valid account_uid & contact_uid/)
       end
     end
   end
