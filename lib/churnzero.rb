@@ -1,4 +1,5 @@
 require "ostruct"
+require "churnzero/account"
 require "churnzero/client"
 require "churnzero/contact"
 require "churnzero/version"
