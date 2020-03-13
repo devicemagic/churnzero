@@ -1,8 +1,6 @@
 # Churnzero
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/churnzero`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Sends accounts, contacts and events to Churnzero in order to track customer churn.
 
 ## Installation
 
@@ -22,7 +20,36 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Configure your app key
+
+```ruby
+# eg. config/initializers/churnzero.rb
+Churnzero.configure do |config|
+  config.app_key = 'ABC123DEF456ABC123DEF456ABC123DEF456'
+end
+```
+
+### Accounts
+
+```ruby
+account = Churnzero::Account.new(account_uid: "acme-123", contact_uid: "foo-567", name: "ACME")
+account.save
+```
+
+### Contacts
+
+```ruby
+contact = Churnzero::Contact.new(account_uid: "acme-123", contact_uid: "foo-567", email: "foo@acme.com", first_name: "Foo", last_name: "Bar")
+contact.save
+```
+
+### Events
+
+```ruby
+# TODO: implement custom fields eg. cf_SomeFieldHere
+event = Churnzero::Event.new(account_uid: "acme-123", contact_uid: "foo-567", event_name: "Sent Email", event_date: "1 Jan 2020 13:31", description: 'Account invite email', quantity: 3, allow_duplicates: false)
+event.save
+```
 
 ## Development
 
@@ -32,4 +59,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/churnzero.
+Bug reports and pull requests are welcome on GitHub at https://github.com/devicemagic/churnzero.
