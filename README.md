@@ -46,10 +46,14 @@ contact.save
 ### Events
 
 ```ruby
-# TODO: implement custom fields eg. cf_SomeFieldHere
 event = Churnzero::Event.new(account_uid: "acme-123", contact_uid: "foo-567", event_name: "Sent Email", event_date: "1 Jan 2020 13:31", description: 'Account invite email', quantity: 3, allow_duplicates: false)
 event.save
 ```
+
+## Planned Features
+
+- Process response body when request unsuccessful
+- Implement event custom fields eg. cf_SomeFieldHere
 
 ## Development
 

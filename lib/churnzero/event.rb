@@ -14,7 +14,7 @@ module Churnzero
       data = mapped_attributes.merge({'action' => 'trackEvent',
                                       'accountExternalId' => account_uid,
                                       'contactExternalId' => contact_uid,
-                                      'EventName' => event_name})
+                                      'eventName' => event_name})
       Client.new.post(data)
     end
 
@@ -38,7 +38,7 @@ module Churnzero
 
       def mapped_attributes
         {
-          'EventDate' => event_date,
+          'eventDate' => event_date,
           'description' => attributes[:description],
           'quantity' => attributes[:quantity],
           'allowDupes' => attributes[:allow_duplicates]

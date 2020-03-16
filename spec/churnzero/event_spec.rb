@@ -18,8 +18,8 @@ RSpec.describe Churnzero::Event do
         data = {"action" => "trackEvent",
                 "accountExternalId" => "acme-123",
                 "contactExternalId" => "foo-567",
-                "EventName" => "Sent Email",
-                "EventDate" => Time.parse(event_date).iso8601,
+                "eventName" => "Sent Email",
+                "eventDate" => Time.parse(event_date).iso8601,
                 "description" => "Join team ACME",
                 "quantity" => 3}
 

@@ -1,5 +1,3 @@
-require "net/http"
-
 module Churnzero
   class Client
     BASE_URL = "https://analytics.churnzero.net/i"
@@ -16,9 +14,9 @@ module Churnzero
 
       case response
       when Net::HTTPSuccess
-        "Request Succeeded"
+        true
       else
-        "Request Failed"
+        false
       end
     end
 

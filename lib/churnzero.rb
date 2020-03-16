@@ -1,4 +1,5 @@
 require "ostruct"
+require "net/http"
 require "time"
 require "churnzero/account"
 require "churnzero/client"
