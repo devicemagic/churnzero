@@ -1,11 +1,11 @@
 RSpec.describe Churnzero::Account do
-  subject { Churnzero::Account.new(account_uid: "acme-123", contact_uid: "foo-567", name: "ACME") }
+  subject { Churnzero::Account.new(account_uid: "acme-123", contact_uid: "foo-567", name: "ACME", custom_attribute: 'value') }
 
   describe ".new" do
     it "sets the correct values" do
       expect(subject.account_uid).to eq("acme-123")
       expect(subject.contact_uid).to eq("foo-567")
-      expect(subject.attributes).to eq({name: "ACME"})
+      expect(subject.attributes).to eq({name: "ACME", custom_attribute: "value"})
     end
   end
 
@@ -17,7 +17,8 @@ RSpec.describe Churnzero::Account do
                 "action" => "setAttribute",
                 "accountExternalId" => "acme-123",
                 "contactExternalId" => "foo-567",
-                "attr_Name" => "ACME"}
+                "attr_Name" => "ACME",
+                "attr_Custom Attribute" => "value"}
 
         expect_any_instance_of(Churnzero::Client).to receive(:post).with(data) { }
         subject.save

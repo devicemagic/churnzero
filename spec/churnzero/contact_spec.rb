@@ -1,11 +1,11 @@
 RSpec.describe Churnzero::Contact do
-  subject { Churnzero::Contact.new(account_uid: "acme-123", contact_uid: "foo-567", email: "foo@acme.com", first_name: "Foo", last_name: "Bar") }
+  subject { Churnzero::Contact.new(account_uid: "acme-123", contact_uid: "foo-567", email: "foo@acme.com", first_name: "Foo", last_name: "Bar", login_count: 5) }
 
   describe ".new" do
     it "sets the correct values" do
       expect(subject.account_uid).to eq("acme-123")
       expect(subject.contact_uid).to eq("foo-567")
-      expect(subject.attributes).to eq({email: "foo@acme.com", first_name: "Foo", last_name: "Bar"})
+      expect(subject.attributes).to eq({email: "foo@acme.com", first_name: "Foo", last_name: "Bar", login_count: 5})
     end
   end
 
@@ -19,7 +19,8 @@ RSpec.describe Churnzero::Contact do
                 "contactExternalId" => "foo-567",
                 "attr_FirstName" => "Foo",
                 "attr_LastName" => "Bar",
-                "attr_Email" => "foo@acme.com"}
+                "attr_Email" => "foo@acme.com",
+                "attr_Login Count" => 5}
 
         expect_any_instance_of(Churnzero::Client).to receive(:post).with(data) { }
         subject.save

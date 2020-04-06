@@ -28,11 +28,24 @@ module Churnzero
       end
 
       def mapped_attributes
-        {
-          'attr_Email' => attributes[:email],
-          'attr_FirstName' => attributes[:first_name],
-          'attr_LastName' => attributes[:last_name]
+        default = {
+          'attr_Email' => attributes.delete(:email),
+          'attr_FirstName' => attributes.delete(:first_name),
+          'attr_LastName' => attributes.delete(:last_name)
         }.compact
+
+        # Note custom attributes are coverted to start case
+        # example :message_count will become "Message Count"
+        custom = {}
+        attributes.each do |key, value|
+          key = key.to_s.split("_").map(&:capitalize).join(" ")
+          key = "attr_#{key}"
+          custom[key] = value
+        end
+        custom = custom.compact
+
+        # Note default attributes takes precedence
+        custom.merge(default)
       end
 
   end

@@ -29,17 +29,19 @@ Churnzero.configure do |config|
 end
 ```
 
-### Accounts
+### Creating or Updating Accounts
+Initialize an Account object with the preferred attributes, then call `#save`
 
 ```ruby
-account = Churnzero::Account.new(account_uid: "acme-123", contact_uid: "foo-567", name: "ACME")
+account = Churnzero::Account.new(account_uid: "acme-123", contact_uid: "foo-567", name: "ACME", assigned_devices: 3)
 account.save
 ```
 
-### Contacts
+### Creating or Updating Contacts
+Initialize a Contact object with the preferred attributes, then call `#save`
 
 ```ruby
-contact = Churnzero::Contact.new(account_uid: "acme-123", contact_uid: "foo-567", email: "foo@acme.com", first_name: "Foo", last_name: "Bar")
+contact = Churnzero::Contact.new(account_uid: "acme-123", contact_uid: "foo-567", email: "foo@acme.com", first_name: "Foo", last_name: "Bar", login_count: 8)
 contact.save
 ```
 
